@@ -1,0 +1,36 @@
+{
+ "name": "Naukri to Aavaz",
+ "version": "1.0",
+ "description": "Fetch contact from naukri to push on Aavaz",
+ "manifest_version": 2,
+ "browser_action": {
+   "default_title": "Naukri to Aavaz",
+   "default_popup": "popup.html" 
+ },
+ "permissions": [
+   "tabs",
+   "storage",
+   "activeTab",
+   "<all_urls>"
+ ],
+ "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html",
+ "content_security_policy": "script-src 'self' https://code.jquery.com https://cdn.datatables.net; object-src 'self'",
+ "content_scripts": [
+   {
+     "matches": ["https://resdex.naukri.com/v2/search/searchResults"],
+     "js": ["selection.js"],
+     "run_at": "document_end",
+     "all_frames": true
+   }
+ ],
+ "icons": {
+    "16": "/images/icon.png",
+    "32": "/images/icon.png",
+    "48": "/images/icon.png",
+    "128": "/images/icon.png"
+  }
+}
